@@ -1,9 +1,15 @@
 name: .NET Core
 
-on: [push]
+on:
+  push:
+    branches:
+      - develop
+      - master
+  pull_request:
+    types: [assigned, opened, synchronize, reopened]
 
 jobs:
-  build:
+  push-build:
 
     runs-on: ubuntu-latest
 
@@ -12,6 +18,7 @@ jobs:
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 2.1.804
+        dotnet-version: 6.x
+
     - name: Build with dotnet
       run: dotnet build --configuration Release
