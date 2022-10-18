@@ -7,7 +7,7 @@ on:
       - master
 
 jobs:
-  build:
+  push-build:
 
     runs-on: ubuntu-latest
 
