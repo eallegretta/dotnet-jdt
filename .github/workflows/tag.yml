@@ -1,0 +1,28 @@
+name: Tagging Build
+
+on:
+  push:
+    tags:
+      - '*.*'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 6.x
+
+    - name: Build with dotnet
+      run: |
+        REF=${{ github.ref }}
+        TAG=${REF/refs\/tags\//}
+        dotnet pack DotNet.Jdt.sln --configuration Release --version $TAG --output dist
+        
+    - name: Push Nuget Package
+      run: |
+        dotnet nuget push dist/*.nupkg --api-key ${{ secret.NUGET_API_KEY }}

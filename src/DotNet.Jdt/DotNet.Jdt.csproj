@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <OutputType>Exe</OutputType>
-        <TargetFramework>netcoreapp2.1</TargetFramework>
+        <TargetFramework>net6.0</TargetFramework>
         <PackAsTool>true</PackAsTool>
         <ToolCommandName>jdt</ToolCommandName>
         <PackageOutputPath>./nupkg</PackageOutputPath>
@@ -11,13 +11,13 @@
 
     <PropertyGroup>
         <PackageId>dotnet-jdt</PackageId>
-        <Description>dotnet-jdt is a cross-platform .NET Core 2.1 or later global tool for applying JSON Document Transformation</Description>
+        <Description>dotnet-jdt is a cross-platform .NET Core 6.0 or later global tool for applying JSON Document Transformation</Description>
         <PackageTags>netcoreapp21;global-tool;jdt;transform;json</PackageTags>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="McMaster.Extensions.CommandLineUtils" Version="2.5.1" />
-        <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="3.1.2" />
+        <PackageReference Include="McMaster.Extensions.CommandLineUtils" Version="4.0.1" />
+        <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="6.0.0" />
         <PackageReference Include="Microsoft.VisualStudio.Jdt" Version="0.9.23" />
     </ItemGroup>
 
