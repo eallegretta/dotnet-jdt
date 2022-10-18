@@ -25,4 +25,4 @@ jobs:
         
     - name: Push Nuget Package
       run: |
-        dotnet nuget push dist/*.nupkg --api-key ${{ secret.NUGET_API_KEY }}
+        dotnet nuget push dist/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }}
