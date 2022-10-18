@@ -21,7 +21,7 @@ jobs:
       run: |
         REF=${{ github.ref }}
         TAG=${REF/refs\/tags\//}
-        dotnet pack DotNet.Jdt.sln --configuration Release --version $TAG --output dist
+        dotnet pack DotNet.Jdt.sln --configuration Release --p:Version=$TAG --output dist
         
     - name: Push Nuget Package
       run: |
