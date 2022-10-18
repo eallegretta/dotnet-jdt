@@ -21,7 +21,11 @@ jobs:
       run: |
         REF=${{ github.ref }}
         TAG=${REF/refs\/tags\//}
-        dotnet pack DotNet.Jdt.sln --configuration Release -p:Version=$TAG --output dist
+        ARGS=-p:Version=$TAG
+        # Allow to override Nuget Package Id for testing folk repositories
+        PACKAGE_ID=${{ secrets.PACKAGE_ID }}
+        [ -z "$PACKAGE_ID"] && ARGS=$ARGS -p:PackageId=$PACKAGE_ID
+        dotnet pack DotNet.Jdt.sln --configuration Release $ARGS --output dist
         
     - name: Push Nuget Package
       run: |
