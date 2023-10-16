@@ -15,7 +15,7 @@ jobs:
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 6.x
+        dotnet-version: 7.x
 
     - name: Build with dotnet
       run: |
@@ -26,7 +26,7 @@ jobs:
         PACKAGE_ID=${{ secrets.PACKAGE_ID }}
         [ ! -z "$PACKAGE_ID" ] && ARGS="$ARGS -p:PackageId=$PACKAGE_ID"
         dotnet pack DotNet.Jdt.sln --configuration Release $ARGS --output dist
-        
+
     - name: Push Nuget Package
       run: |
         dotnet nuget push dist/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
